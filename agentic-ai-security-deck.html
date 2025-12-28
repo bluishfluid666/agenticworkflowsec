@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Brief: Securing the Agentic Frontier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0e27;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        .slide {
+            width: 100%;
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 120px;
+            position: relative;
+        }
+
+        /* Slide 1: Cover */
+        .slide-1 {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a2456 100%);
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+        }
+
+
+        .slide-1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .main-title {
+            font-size: 72px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 28px;
+            font-weight: 400;
+            color: #94a3b8;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand-logos {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .brand-logos img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .author-info {
+            font-size: 18px;
+            color: #64748b;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .author-name {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .date {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #475569;
+        }
+
+        /* Slide 2: Context */
+        .slide-2 {
+            background: linear-gradient(135deg, #1a2456 0%, #0a0e27 100%);
+        }
+
+        .slide-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #3b82f6;
+            letter-spacing: -1px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .callout-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #3b82f6;
+            padding: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .callout-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .callout-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        .attack-diagram {
+            margin-top: 40px;
+            padding: 40px;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .diagram-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #3b82f6;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .flow-diagram {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .flow-step {
+            flex: 1;
+            text-align: center;
+            padding: 25px;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .flow-step-number {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .flow-step-text {
+            font-size: 15px;
+            color: #e2e8f0;
+            line-height: 1.5;
+        }
+
+        .arrow {
+            color: #3b82f6;
+            font-size: 24px;
+        }
+
+        /* Slide 3: Framework */
+        .slide-3 {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a2456 100%);
+        }
+
+        .framework-illustration {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .framework-illustration img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .framework-table {
+            margin-top: 40px;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .framework-layer {
+            padding: 35px 40px;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            display: grid;
+            grid-template-columns: 60px 200px 1fr;
+            gap: 30px;
+            align-items: start;
+            transition: background 0.3s ease;
+        }
+
+        .framework-layer:hover {
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .framework-layer:last-child {
+            border-bottom: none;
+        }
+
+        .layer-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(59, 130, 246, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .layer-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 8px;
+        }
+
+        .layer-subtitle {
+            font-size: 14px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .layer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mechanism {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        .mechanism strong {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        /* Slide 4: Roadmap */
+        .slide-4 {
+            background: linear-gradient(135deg, #1a2456 0%, #0a0e27 100%);
+        }
+
+        /* Slide 5: References */
+        .slide-5 {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a2456 100%);
+        }
+
+        .references-container {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            height: calc(100vh - 250px);
+        }
+
+        .reference-item {
+            display: flex;
+            gap: 15px;
+            padding: 18px;
+            background: rgba(59, 130, 246, 0.05);
+            border-left: 3px solid #3b82f6;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .reference-item:hover {
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateX(5px);
+        }
+
+        .ref-number {
+            font-size: 16px;
+            font-weight: 700;
+            color: #3b82f6;
+            min-width: 35px;
+        }
+
+        .ref-content {
+            flex: 1;
+        }
+
+        .ref-text {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #e2e8f0;
+            margin-bottom: 6px;
+        }
+
+        .ref-link {
+            font-size: 11px;
+            color: #64748b;
+            word-break: break-all;
+            font-family: 'Courier New', monospace;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .ref-link:hover {
+            color: #3b82f6;
+            text-decoration: underline;
+        }
+
+        .ref-link:visited {
+            color: #64748b;
+        }
+
+        .roadmap-container {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .roadmap-phase {
+            flex: 1;
+            background: rgba(59, 130, 246, 0.05);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            padding: 35px;
+            transition: all 0.3s ease;
+        }
+
+        .roadmap-phase:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .phase-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: rgba(59, 130, 246, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .phase-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 15px;
+        }
+
+        .phase-description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        .conclusion-box {
+            margin-top: 60px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            text-align: center;
+        }
+
+        .conclusion-quote {
+            font-size: 26px;
+            font-weight: 600;
+            line-height: 1.5;
+            color: #e2e8f0;
+            font-style: italic;
+        }
+
+        .quote-author {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #64748b;
+        }
+
+        /* Navigation */
+        .slide-nav {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot:hover, .nav-dot.active {
+            background: #3b82f6;
+            transform: scale(1.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 60px 40px;
+            }
+
+            .main-title {
+                font-size: 48px;
+            }
+
+            .subtitle {
+                font-size: 20px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap-container {
+                flex-direction: column;
+            }
+
+            .framework-layer {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container" id="slideContainer">
+        <!-- Slide 1: Cover -->
+        <div class="slide slide-1">
+            <h1 class="main-title">STRATEGIC BRIEF:<br/>SECURING THE AGENTIC FRONTIER</h1>
+            <p class="subtitle">Addressing Indirect Prompt Injection Risks in Base & Rework Ecosystems</p>
+            <div class="brand-logos">
+                <img src="https://datax-talent.basecdn.net/baseinc/logo-footer.png" alt="Base.vn Logo">
+                <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/2debe474-94ea-44f2-a2ce-a2110fb3b8e0.png?w=128&h=128&fit=max&dpr=3&auto=format&q=50" alt="Rework.com Logo">
+            </div>
+            <div class="author-info">
+                Prepared by <span class="author-name">NGUYỄN MẠNH KHANG</span><br/>
+                AI Security Researcher | Zhejiang University, Hangzhou, Zhejiang, China
+                <div class="date">December 2025</div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Context & Fatal Flaw -->
+        <div class="slide slide-2">
+            <h2 class="slide-title">The Context & The Fatal Flaw</h2>
+            
+            <div class="content-grid">
+                <div class="callout-box">
+                    <div class="callout-title">The Threat: IPI</div>
+                    <div class="callout-text">
+                        <strong>Indirect Prompt Injection bypasses perimeter defenses by embedding malicious instructions in trusted data sources.</strong> Unlike traditional attacks, IPI exploits the LLM's inability to distinguish system instructions from retrieved content.
+                    </div>
+                </div>
+                
+                <div class="callout-box">
+                    <div class="callout-title">OWASP 2026 Alignment</div>
+                    <div class="callout-text">
+                        <strong>Base & Rework architectures face critical vulnerabilities identified in OWASP Top 10 for Agentic Applications:</strong> ASI01 (Goal Hijack), ASI02 (Tool Misuse), ASI05 (Prompt Injection), ASI06 (Insecure Output).
+                    </div>
+                </div>
+            </div>
+
+            <div class="attack-diagram">
+                <div class="diagram-title">IPI Attack Mechanism</div>
+                <div class="flow-diagram">
+                    <div class="flow-step">
+                        <div class="flow-step-number">STEP 1</div>
+                        <div class="flow-step-text">Attacker embeds malicious instructions in external data</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-step-number">STEP 2</div>
+                        <div class="flow-step-text">Agent retrieves and processes compromised data</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-step-number">STEP 3</div>
+                        <div class="flow-step-text">Hidden instruction hijacks agent's reasoning chain</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-step-number">STEP 4</div>
+                        <div class="flow-step-text">Unauthorized action executed on sensitive systems</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Framework -->
+        <div class="slide slide-3">
+            <h2 class="slide-title">Proposed Framework: Internal Execution Guardrails</h2>
+            
+            <div class="framework-illustration">
+                <img src="https://ibb.co/B5JYTLGm" alt="Internal Execution Audit Framework">
+            </div>
+            
+            <div class="framework-table">
+                <div class="framework-layer">
+                    <div class="layer-icon">🛡️</div>
+                    <div>
+                        <div class="layer-title">Layer 1</div>
+                        <div class="layer-subtitle">Context Validation</div>
+                    </div>
+                    <div class="layer-content">
+                        <div class="mechanism">
+                            <strong>Security Sandbox:</strong> Deploy hardened LLM (Llama Guard) to classify and sanitize all retrieved external data, treating it as untrusted by default.
+                        </div>
+                        <div class="mechanism">
+                            <strong>Prompt Shielding:</strong> Isolate system prompts from retrieved context. <strong>Agent must explicitly confirm instruction source before execution.</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="framework-layer">
+                    <div class="layer-icon">⚙️</div>
+                    <div>
+                        <div class="layer-title">Layer 2</div>
+                        <div class="layer-subtitle">Execution Control</div>
+                    </div>
+                    <div class="layer-content">
+                        <div class="mechanism">
+                            <strong>Workflow Logic Enforcement:</strong> <strong>Implement explicit, non-LLM based business logic checks on proposed actions</strong> and parameters before API calls to Base Finance or Payroll.
+                        </div>
+                        <div class="mechanism">
+                            <strong>Zero-Trust Execution:</strong> Minimum API permissions per agent. <strong>Human-in-the-Loop (HITL) required for all high-risk actions.</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="framework-layer">
+                    <div class="layer-icon">📊</div>
+                    <div>
+                        <div class="layer-title">Layer 3</div>
+                        <div class="layer-subtitle">Post-Execution Audit</div>
+                    </div>
+                    <div class="layer-content">
+                        <div class="mechanism">
+                            <strong>Adaptive Logic Patching:</strong> Automated forensics on flagged events with autonomous feedback loop. <strong>System learns from injection attempts to dynamically update workflow logic vulnerabilities.</strong>
+                        </div>
+                        <div class="mechanism">
+                            <strong>Continuous Monitoring:</strong> Real-time anomaly detection with comprehensive logging for all agent-API interactions.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Roadmap & Conclusion -->
+        <div class="slide slide-4">
+            <h2 class="slide-title">Strategic Roadmap & Conclusion</h2>
+            
+            <div class="roadmap-container">
+                <div class="roadmap-phase">
+                    <div class="phase-number">01</div>
+                    <div class="phase-title">Security Audit</div>
+                    <div class="phase-description">
+                        <strong>Comprehensive assessment of current Base AI and Rework agent architectures.</strong> Identify all external data ingestion points and map API access permissions across agent workflows.
+                    </div>
+                </div>
+
+                <div class="roadmap-phase">
+                    <div class="phase-number">02</div>
+                    <div class="phase-title">Framework Integration</div>
+                    <div class="phase-description">
+                        <strong>Deploy three-layer guardrail system: Context Validation, Execution Control, and Post-Execution Audit.</strong> Implement HITL checkpoints for high-stakes Finance and Payroll operations.
+                    </div>
+                </div>
+
+                <div class="roadmap-phase">
+                    <div class="phase-number">03</div>
+                    <div class="phase-title">Continuous Monitoring</div>
+                    <div class="phase-description">
+                        <strong>Establish adaptive learning loop for real-time threat detection.</strong> Regular penetration testing with IPI simulation scenarios to validate defense efficacy and patch logic gaps.
+                    </div>
+                </div>
+            </div>
+
+            <div class="conclusion-box">
+                <div class="conclusion-quote">
+                    "We must build the brakes while we're still building the engine, ensuring that AI autonomy never outpaces enterprise safety."
+                </div>
+                <div class="quote-author">— Strategic Imperative for Agentic AI Security</div>
+            </div>
+        </div>
+
+        <!-- Slide 5: References -->
+        <div class="slide slide-5">
+            <h2 class="slide-title">References</h2>
+            
+            <div class="references-container">
+                <div class="reference-item">
+                    <span class="ref-number">[1]</span>
+                    <div class="ref-content">
+                        <div class="ref-text">OWASP Foundation. (2025). LLM Prompt Injection Prevention Cheat Sheet.</div>
+                        <a href="https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html" class="ref-link" target="_blank" rel="noopener noreferrer">https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html</a>
+                    </div>
+                </div>
+
+                <div class="reference-item">
+                    <span class="ref-number">[2]</span>
+                    <div class="ref-content">
+                        <div class="ref-text">牟大桥, 卫志华, 孙铭隆, 宋娜. (2024). 面向金融领域大语言模型的提示注入攻击防御机制研究及应用.</div>
+                        <a href="https://search.ebscohost.com/login.aspx?direct=true&profile=ehost&scope=site&authtype=crawler&jrnl=2096109X&AN=181128224" class="ref-link" target="_blank" rel="noopener noreferrer">https://search.ebscohost.com/login.aspx?direct=true&profile=ehost&scope=site&authtype=crawler&jrnl=2096109X&AN=181128224</a>
+                    </div>
+                </div>
+
+                <div class="reference-item">
+                    <span class="ref-number">[3]</span>
+                    <div class="ref-content">
+                        <div class="ref-text">Trend Micro. (2025). Exploiting DeepSeek-R1: Breaking Down Chain of Thought.</div>
+                        <a href="https://www.trendmicro.com/en_us/research/25/c/exploiting-deepseek-r1.html" class="ref-link" target="_blank" rel="noopener noreferrer">https://www.trendmicro.com/en_us/research/25/c/exploiting-deepseek-r1.html</a>
+                    </div>
+                </div>
+
+                <div class="reference-item">
+                    <span class="ref-number">[4]</span>
+                    <div class="ref-content">
+                        <div class="ref-text">C Akiri, H Simpson, K Aryal, A Khanna. (2025). Safety and Security Analysis of Large Language Models: Benchmarking Risk Profile and Harm Potential.</div>
+                        <a href="https://arxiv.org/abs/2509.10655" class="ref-link" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2509.10655</a>
+                    </div>
+                </div>
+
+                <div class="reference-item">
+                    <span class="ref-number">[5]</span>
+                    <div class="ref-content">
+                        <div class="ref-text">Rework.com. (2025). Rework Platform - The Operation Platform.</div>
+                        <a href="https://rework.com/ai/" class="ref-link" target="_blank" rel="noopener noreferrer">https://rework.com/ai/</a>
+                    </div>
+                </div>
+
+                <div class="reference-item">
+                    <span class="ref-number">[6]</span>
+                    <div class="ref-content">
+                        <div class="ref-text">OWASP GenAI Security Project. (2025). OWASP Top 10 for Agentic Applications for 2026. (2025). Rework.com | The universal platform for operations.</div>
+                        <a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" class="ref-link" target="_blank" rel="noopener noreferrer">https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/</a>
+                    </div>
+                </div>
+
+                <div class="reference-item">
+                    <span class="ref-number">[7]</span>
+                    <div class="ref-content">
+                        <div class="ref-text">ByteDance Jeddak AgentArmor Framework.</div>
+                        <a href="https://www.anquanke.com/post/id/312426" class="ref-link" target="_blank" rel="noopener noreferrer">https://www.anquanke.com/post/id/312426</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Dots -->
+    <div class="slide-nav">
+        <div class="nav-dot active" data-slide="0"></div>
+        <div class="nav-dot" data-slide="1"></div>
+        <div class="nav-dot" data-slide="2"></div>
+        <div class="nav-dot" data-slide="3"></div>
+        <div class="nav-dot" data-slide="4"></div>
+    </div>
+
+    <script>
+        const container = document.getElementById('slideContainer');
+        const dots = document.querySelectorAll('.nav-dot');
+        const slides = document.querySelectorAll('.slide');
+
+        // Navigation dots
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const slideIndex = parseInt(dot.dataset.slide);
+                slides[slideIndex].scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Update active dot on scroll
+        let isScrolling;
+        container.addEventListener('scroll', () => {
+            clearTimeout(isScrolling);
+            isScrolling = setTimeout(() => {
+                const scrollPosition = container.scrollTop;
+                const slideHeight = window.innerHeight;
+                const currentSlide = Math.round(scrollPosition / slideHeight);
+                
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }, 100);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const currentScroll = container.scrollTop;
+            const slideHeight = window.innerHeight;
+            
+            if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+                e.preventDefault();
+                container.scrollBy({ top: slideHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+                e.preventDefault();
+                container.scrollBy({ top: -slideHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
